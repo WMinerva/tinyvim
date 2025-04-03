@@ -98,12 +98,12 @@ return {
       desc = "Show Notification",
     },
 
-    {
-      "<leader>e",
-      function()
-        Snacks.picker.explorer()
-      end,
-      desc = "Explorer Tree",
-    },
+    -- {
+    --   "<leader>e",
+    --   function()
+    --     Snacks.picker.explorer()
+    --   end,
+    --   desc = "Explorer Tree",
+    -- },
   },
 }

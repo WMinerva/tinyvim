@@ -21,7 +21,17 @@ return {
       require("mini.statusline").setup { set_vim_settings = false }
     end,
   },
-
+ {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   -- we use cmp plugin only when in insert mode
   -- so lets lazyload it at InsertEnter event, to know all the events check h-events
   -- completion , now all of these plugins are dependent on cmp, we load them after cmp
@@ -73,28 +83,21 @@ return {
     opts = {},
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "saghen/blink.cmp",
-    },
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "plugins.configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "saghen/blink.cmp",
+  --   },
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require "plugins.configs.lspconfig"
+  --   end,
+  -- },
 
   {
     "stevearc/conform.nvim",
     lazy = true,
     opts = require "plugins.configs.conform",
-  },
-
-  -- files finder etc
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    opts = require "plugins.configs.telescope",
   },
 
   {
